@@ -1,0 +1,196 @@
+@import "variables.less";
+
+table {
+    border: 1px solid @blockBorderColor;
+    margin: 20px 0 10px 0;
+
+    label.block {
+        padding: 0;
+    }
+}
+
+tr {
+    border-bottom: 1px dotted @blockBorderColor;
+}
+
+th, td {
+    padding: 4px 10px;
+}
+
+th[style="text-align: right;"], td[align="right"] {
+    input[type="checkbox"], input[type="radio"] {
+        margin-right: 0;
+        margin-left: 5px;
+    }
+}
+
+thead td, thead th, .odd td, tbody tr:hover td, tbody tr:hover th,
+.js .checkable .checked td, .js .checkable .checked th {
+    background: transparent;
+}
+
+thead tr {
+    background: @blockBgColor;
+    border-bottom: 1px solid @blockBorderColor;
+}
+
+thead td, thead th {
+    padding: 7px 10px;
+    background: transparent;
+    text-align: left;
+}
+
+tbody th, tbody td {
+    vertical-align: top;
+}
+
+tbody td[align="right"] {
+    text-align: right;
+}
+
+tbody td[align="right"] label.block {
+    text-align: right;
+}
+
+tbody th span {
+    padding-top: 4px;
+}
+
+/* Checkable */
+table.checkable {
+    .checked {
+        background: @lightBgColor;
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+        margin: 2px 5px 2px 0;
+    }
+}
+
+table.checkable > thead {
+    a {
+        padding: 7px 0;
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+        margin: 2px 5px 2px 0;
+    }
+}
+
+table.checkable > tbody > tr:hover {
+    background: @menuHoverColor;
+}
+
+table.checkable > tbody > tr.checked:hover {
+    background: @lightBgColorHover;
+}
+
+.scrollable {
+    display: table-cell;
+    padding-right: 20px;
+}
+
+.loadmore {
+    margin: 0;
+    padding: 10px 0;
+}
+
+.footer {
+    position: relative;
+    padding: 0;
+
+    & > div {
+        padding: 0;
+    }
+
+    & > p {
+        position: fixed;
+        left: @menuWidth + 1;
+        right: 0;
+        bottom: 0;
+        margin: 0;
+        padding: 0 10px;
+        border: none;
+        border-top: 1px solid @blockBorderColor;
+        background: @blockBgColor;
+        z-index: 102; // Over logout in mobile layout.
+        font-weight: bold;
+
+        a, label {
+            display: inline-block;
+            margin: 0;
+            padding: 0 10px;
+            height: 40px;
+            line-height: 40px;
+        }
+    }
+}
+
+// Import block under the table pagination.
+.footer + div {
+    line-height: 36px;
+
+    a {
+        padding: 10px 0;
+    }
+}
+
+.js .column {
+    background: @bgColor;
+    padding: 0;
+    margin: -36px 0 0 -62px;
+    border: 1px solid #E49254;
+    border-radius: 2px;
+    z-index: 10;
+
+    a {
+        display: inline-block;
+        padding: 0;
+        width: 30px;
+        height: 30px;
+        overflow: hidden;
+        vertical-align: middle;
+
+        &:before {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            font-family: entypo, sans-serif;
+            font-size: 24pt;
+            text-align: center;
+            vertical-align: -3px;
+        }
+
+        &:hover:before {
+            background: @lightBgColor;
+        }
+    }
+
+    a[href*='&select=']:before {
+        content: "⬇";
+    }
+
+    a[href='#fieldset-search']:before {
+        content: "🔍";
+    }
+}
+
+@media only screen and (max-width: @mobileThreshold) {
+    .footer > p {
+        position: static;
+        margin: -10px 0 10px 0;
+
+        border-top: none;
+        border-left: 1px solid @blockBorderColor;
+        border-right: 1px solid @blockBorderColor;
+        border-bottom: 1px solid @blockBorderColor;
+    }
+
+    .scrollable {
+        display: block;
+        margin: 0 -20px;
+        padding: 0 20px;
+        overflow-x: scroll;
+    }
+}
